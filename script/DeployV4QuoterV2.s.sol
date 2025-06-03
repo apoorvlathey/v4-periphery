@@ -1,0 +1,22 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+import "forge-std/console2.sol";
+import "forge-std/Script.sol";
+
+import {Deploy, IV4QuoterV2} from "../test/shared/Deploy.sol";
+
+contract DeployV4QuoterV2 is Script {
+    function setUp() public {}
+
+    function run(address poolManager) public returns (IV4QuoterV2 state) {
+        vm.startBroadcast();
+
+        // forge script --broadcast --sig 'run(address)' --rpc-url <RPC_URL> --private-key <PRIV_KEY> --verify script/DeployV4QuoterV2.s.sol:DeployV4QuoterV2 <POOL_MANAGER_ADDR>
+        state = Deploy.v4QuoterV2(poolManager, hex"00");
+        console2.log("V4QuoterV2", address(state));
+        console2.log("PoolManager", address(state.poolManager()));
+
+        vm.stopBroadcast();
+    }
+}

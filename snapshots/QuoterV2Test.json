@@ -1,0 +1,15 @@
+{
+  "QuoterV2_exactInputSingle_oneForZero_multiplePositions": "125464",
+  "QuoterV2_exactInputSingle_zeroForOne_multiplePositions": "131667",
+  "QuoterV2_exactOutputSingle_oneForZero": "58807",
+  "QuoterV2_exactOutputSingle_zeroForOne": "64034",
+  "QuoterV2_quoteExactInput_oneHop_1TickLoaded": "106436",
+  "QuoterV2_quoteExactInput_oneHop_initializedAfter": "131084",
+  "QuoterV2_quoteExactInput_oneHop_startingInitialized": "53871",
+  "QuoterV2_quoteExactInput_twoHops": "190648",
+  "QuoterV2_quoteExactOutput_oneHop_1TickLoaded": "105859",
+  "QuoterV2_quoteExactOutput_oneHop_2TicksLoaded": "136514",
+  "QuoterV2_quoteExactOutput_oneHop_initializedAfter": "105886",
+  "QuoterV2_quoteExactOutput_oneHop_startingInitialized": "60892",
+  "QuoterV2_quoteExactOutput_twoHops": "190230"
+}

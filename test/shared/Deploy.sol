@@ -5,6 +5,7 @@ import {Vm} from "forge-std/Vm.sol";
 import {IPositionDescriptor} from "../../src/interfaces/IPositionDescriptor.sol";
 import {IPositionManager} from "../../src/interfaces/IPositionManager.sol";
 import {IV4Quoter} from "../../src/interfaces/IV4Quoter.sol";
+import {IV4QuoterV2} from "../../src/interfaces/IV4QuoterV2.sol";
 import {IStateView} from "../../src/interfaces/IStateView.sol";
 import {TransparentUpgradeableProxy} from "@openzeppelin/contracts/proxy/transparent/TransparentUpgradeableProxy.sol";
 
@@ -37,6 +38,14 @@ library Deploy {
     function v4Quoter(address poolManager, bytes memory salt) internal returns (IV4Quoter quoter) {
         bytes memory args = abi.encode(poolManager);
         bytes memory initcode = abi.encodePacked(vm.getCode("V4Quoter.sol:V4Quoter"), args);
+        assembly {
+            quoter := create2(0, add(initcode, 0x20), mload(initcode), salt)
+        }
+    }
+
+    function v4QuoterV2(address poolManager, bytes memory salt) internal returns (IV4QuoterV2 quoter) {
+        bytes memory args = abi.encode(poolManager);
+        bytes memory initcode = abi.encodePacked(vm.getCode("V4QuoterV2.sol:V4QuoterV2"), args);
         assembly {
             quoter := create2(0, add(initcode, 0x20), mload(initcode), salt)
         }
